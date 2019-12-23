@@ -98,7 +98,7 @@ view.showComponent = function(name) {
     case 'chat': {
       let app = document.getElementById('app')
       app.innerHTML = components.nav + components.chat
-
+      document.getElementById("user-email").innerText += firebase.auth().currentUser.displayName
       controller.loadConversations()
       controller.setupOnSnapshot() // nhan thay doi tu database
 
@@ -184,7 +184,7 @@ view.enable = function(id) {
 view.showCurrentConversation = function() {
   if(model.currentConversation) {
     // show message chat
-    document.getElementById("user-email").innerText += firebase.auth().currentUser.displayName
+    
 
     let messages = model.currentConversation.messages
     let listMessages = document.getElementById('list-messages')

@@ -5,7 +5,7 @@ components.register = `
 <section class="register-container">
   <form id="register-form" class="register-form">
     <div class="form-header">
-      <h3>Chat Box</h3>
+      <h3>Mindx chat</h3>
     </div>
     <div class="form-content">
       <div class="name-wrapper">
@@ -45,7 +45,7 @@ components.logIn = `
 <section class="log-in-container">
   <form id="log-in-form" class="log-in-form">
     <div class="form-header">
-      <h3>Chat Box</h3>
+      <h3>Mindx chat</h3>
     </div>
     <div class="form-content">
       <div class="input-wrapper">
@@ -69,8 +69,10 @@ components.logIn = `
 components.nav = `
 <nav class="main-nav">
   <div class="user-profile">
-    <span id="user-email"></span>
-    <button id="sign-out-btn" class="btn-icon"><i class="fas fa-sign-out-alt"></i></button>
+    <span id="user-name">linhnt28031995@gmail.com</span>
+    <button id="sign-out-btn" class="btn-icon" data-toggle="tooltip" data-placement="bottom" title="Log out">
+      <i class="fas fa-sign-out-alt"></i>
+    </button>
   </div>
 </nav>
 `
@@ -110,7 +112,17 @@ components.chat = `
       </div>
       <div id="created-at" class="created-at"></div>
     </div>
-    <button id="leave-conversation-btn" class="btn-icon">
+    <br>
+    <form id="form-add-new-member" class="form-add-new-member">
+      <div class="input-wrapper">
+        <input id="new-friend-email-input" type="email" name="newFriendEmail" placeholder="Enter your friend email..">
+        <div id="new-friend-email-error" class="message-error"></div>
+      </div>
+      <button type="submit" id="add-new-member-btn" class="btn-icon" data-toggle="tooltip" data-placement="bottom" title="Add new member">
+        <i class="fas fa-user-plus"></i>
+      </button>
+    </form>  
+    <button type="button" id="leave-conversation-btn" class="btn-icon" data-toggle="tooltip" data-placement="bottom" title="Leave conversation">
       <i class="fas fa-minus"></i>
     </button>
   </div>

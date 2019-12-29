@@ -41,10 +41,14 @@ button:disabled {
 }
 
 button.btn-icon {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   padding: 0px;
 }
+
+/* #add-member-btn:hover{
+  
+} */
 
 .register-container {
   width: 100%;
@@ -129,11 +133,11 @@ button.btn-icon {
 }
 
 .aside-left {
-  width: 15%;
+  width: 17%;
 }
 
 .aside-right {
-  width: 15%;
+  width: 17%;
   padding: 10px;
 }
 
@@ -201,21 +205,41 @@ button.btn-icon {
 }
 
 .list-messages .message-chat {
-  margin-bottom: 10px;
-  padding: 10px;
+  /* margin-bottom: 5px; */
+  padding: 5px;
 }
 
 .list-messages .your {
   text-align: right;
+  font-family: Helvetica, Arial, sans-serif;
 }
+
+.list-messages .your span {
+  background: #0084ff;
+  color: #fff;
+  border: 1px solid #4482ff;
+}
+
+.list-messages .him span {
+  background: #eee;
+  border: 1px solid #eee;
+
+}
+
+.list-messages .message-chat h5 {
+  margin-bottom: -5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: smaller;
+  font-weight: bold;
+}
+
 
 .list-messages .message-chat span {
   display: inline-block;
   max-width: calc(50% - 10px);
   padding: 10px;
-  border: 1px solid #4482ff;
-  border-radius: 5px;
-  color: #4482ff;
+  border-radius: 15px;
   word-break: break-word;
 }
 

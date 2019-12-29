@@ -1,7 +1,7 @@
 const view = {}
 
-view.showComponent = function(name) {
-  switch(name) {
+view.showComponent = function (name) {
+  switch (name) {
     case 'register': {
       let app = document.getElementById('app')
       app.innerHTML = components.register
@@ -45,7 +45,7 @@ view.showComponent = function(name) {
           )
         ]
 
-        if(allPassed(validateResult)) {
+        if (allPassed(validateResult)) {
           // 3. submit thong tin
           controller.register(registerInfo)
         }
@@ -70,13 +70,13 @@ view.showComponent = function(name) {
 
       function formSubmitHandler(event) {
         event.preventDefault()
-        
+
         // 1. get info
         let logInInfo = {
           email: form.email.value,
           password: form.password.value
         }
-        
+
         // 2. validate info
         let validateResult = [
           view.validate(logInInfo.email, 'email-error', 'Invalid email!'),
@@ -88,17 +88,17 @@ view.showComponent = function(name) {
         ]
 
         // 3. submit info - TODO
-        if(allPassed(validateResult)) {
+        if (allPassed(validateResult)) {
           controller.logIn(logInInfo)
         }
       }
-      
+
       break
     }
     case 'chat': {
       let app = document.getElementById('app')
       app.innerHTML = components.nav + components.chat
-      document.getElementById("user-email").innerText += firebase.auth().currentUser.displayName
+      document.getElementById('user-name').innerHTML = firebase.auth().currentUser.displayName
       controller.loadConversations()
       controller.setupOnSnapshot() // nhan thay doi tu database
 
@@ -111,8 +111,14 @@ view.showComponent = function(name) {
       let formAddConversation = document.getElementById('form-add-conversation')
       formAddConversation.onsubmit = formAddSubmitHandler
 
+      let formAddNewMember = document.getElementById('form-add-new-member')
+      formAddNewMember.onsubmit = formAddNewMemberHandler
+
       let btnLeaveConversation = document.getElementById('leave-conversation-btn')
       btnLeaveConversation.onclick = leaveConversationHandler
+
+      let btnAddNewMember = document.getElementById('add-new-member-btn')
+      btnAddNewMember.onclick = formAddNewMember
 
       function signOutHandler() {
         firebase.auth().signOut()
@@ -122,8 +128,24 @@ view.showComponent = function(name) {
         e.preventDefault()
 
         let messageContent = formChat.message.value.trim()
-        if(messageContent) {
+        if (messageContent) {
           controller.addMessage(messageContent)
+        }
+      }
+
+      function formAddNewMemberHandler(e) {
+        e.preventDefault()
+        let friendEmail = formAddNewMember.newFriendEmail.value
+
+        let validateResult = [
+          view.validate(
+            friendEmail && friendEmail != firebase.auth().currentUser.email,
+            'friend-email-error',
+            'Invalid friend email!'
+          )
+        ]
+        if (allPassed(validateResult)) {
+          controller.addNewMember(friendEmail)
         }
       }
 
@@ -141,7 +163,7 @@ view.showComponent = function(name) {
           )
         ]
 
-        if(allPassed(validateResult)) {
+        if (allPassed(validateResult)) {
           controller.addConversation(title, friendEmail)
         }
       }
@@ -155,12 +177,12 @@ view.showComponent = function(name) {
   }
 }
 
-view.setText = function(id, text) {
+view.setText = function (id, text) {
   document.getElementById(id).innerText = text
 }
 
-view.validate = function(condition, idErrorTag, messageError) {
-  if(condition) {
+view.validate = function (condition, idErrorTag, messageError) {
+  if (condition) {
     view.setText(idErrorTag, '')
     return true
   } else {
@@ -169,11 +191,11 @@ view.validate = function(condition, idErrorTag, messageError) {
   }
 }
 
-view.disable = function(id) {
+view.disable = function (id) {
   document.getElementById(id).setAttribute('disabled', true)
 }
 
-view.enable = function(id) {
+view.enable = function (id) {
   document.getElementById(id).removeAttribute('disabled')
 }
 /*
@@ -181,25 +203,25 @@ view.enable = function(id) {
     <span>Hello</span>
   </div>
 */
-view.showCurrentConversation = function() {
-  if(model.currentConversation) {
+view.showCurrentConversation = function () {
+  if (model.currentConversation) {
     // show message chat
-    
-
     let messages = model.currentConversation.messages
     let listMessages = document.getElementById('list-messages')
     let currentEmail = firebase.auth().currentUser.email
     listMessages.innerHTML = ""
-  
-    for(let message of messages) {
+
+    for (let message of messages) {
       let className = ""
-      if(message.owner == currentEmail) {
+      if (message.owner == currentEmail) {
         className = "message-chat your"
       } else {
-        className = "message-chat"
+        className = "message-chat him"
       }
+
       let html = `
         <div class="${className}">
+          <h5>${message.ownerName}</h5><br>
           <span>${message.content}</span>
         </div>
       `
@@ -215,7 +237,7 @@ view.showCurrentConversation = function() {
     let createdAtDiv = document.getElementById('created-at')
     listUsers.innerHTML = ''
 
-    for(let user of users) {
+    for (let user of users) {
       let html = `
         <div>${user}</div>
       `
@@ -225,7 +247,7 @@ view.showCurrentConversation = function() {
   }
 }
 
-view.clearCurrentConversation = function() {
+view.clearCurrentConversation = function () {
   let listMessages = document.getElementById('list-messages')
   let listUsers = document.getElementById('list-users')
   let createdAt = document.getElementById('created-at')
@@ -235,19 +257,19 @@ view.clearCurrentConversation = function() {
   createdAt.innerHTML = ''
 }
 
-view.showListConversations = function() {
-  if(model.conversations) {
+view.showListConversations = function () {
+  if (model.conversations) {
     let conversations = model.conversations
     let listConversations = document.getElementById('list-conversations')
 
     listConversations.innerHTML = ""
 
-    for(let conversation of conversations) {
+    for (let conversation of conversations) {
       let id = conversation.id
       let title = conversation.title
       let members = conversation.users.length
       let className = ""
-      if(model.currentConversation && model.currentConversation.id == conversation.id) {
+      if (model.currentConversation && model.currentConversation.id == conversation.id) {
         className = "conversation current"
       } else {
         className = "conversation"
@@ -264,10 +286,10 @@ view.showListConversations = function() {
     }
 
     // gan su kien onclick de chuyen cuoc hoi thoai
-    for(let conversation of conversations) {
+    for (let conversation of conversations) {
       let id = conversation.id
       let conversationDiv = document.getElementById(`conversation-${id}`)
-      
+
       conversationDiv.onclick = onClickHandler
 
       function onClickHandler() {
@@ -280,8 +302,8 @@ view.showListConversations = function() {
 }
 
 function allPassed(validateResult) {
-  for(let result of validateResult) {
-    if(!result) {
+  for (let result of validateResult) {
+    if (!result) {
       return false
     }
   }

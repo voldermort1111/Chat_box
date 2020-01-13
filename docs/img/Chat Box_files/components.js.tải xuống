@@ -5,7 +5,7 @@ components.register = `
 <section class="register-container">
   <form id="register-form" class="register-form">
     <div class="form-header">
-      <h3>Chat Box</h3>
+      <h3>Mindx chat</h3>
     </div>
     <div class="form-content">
       <div class="name-wrapper">
@@ -45,7 +45,7 @@ components.logIn = `
 <section class="log-in-container">
   <form id="log-in-form" class="log-in-form">
     <div class="form-header">
-      <h3>Chat Box</h3>
+      <h3>Mindx chat</h3>
     </div>
     <div class="form-content">
       <div class="input-wrapper">
@@ -74,17 +74,12 @@ components.nav = `
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <form id='change-user-infor-form'>
                 <div class="modal-body card">
-                    <div class="heros">
-                      <img class="background" name='background'
-                      src="https://images.unsplash.com/photo-1425321395722-b1dd54a97cf3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1600&h=900&fit=crop&ixid=eyJhcHBfaWQiOjF9&s=6bb26c224def312127d93e664ec5d03d"
-                      alt=""
-                      >
+                    <div class="hero">
                     </div>
                     <div class="main-info">
                         <div class="user">
-                            <img class="avatar" name='avatar' src="./img/cat.jpg" alt="">
+                            <img class="avatar" src="./img/cat.jpg" alt="">
                             <div class="user-details">
                                 <h3 class="card-text" id="card-user-name">Hiếu Nguyễn</h3>
                                 <br>
@@ -102,19 +97,18 @@ components.nav = `
                                     </div>
                                 </div>
                                 <div class="input-wrapper">
-                                    <input id="change-email" type="email" name="email" placeholder="Email" disabled>
+                                    <input id="change-email" type="email" name="email" placeholder="Email">
                                 </div>
                                 <hr>
                                 <div style="margin-left: 40%;">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" id='btn-change-user-infor' class="btn btn-primary">Save changes</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
 
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
-              </form>  
             </div>
         </div>
     </div>

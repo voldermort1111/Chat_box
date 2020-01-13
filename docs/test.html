@@ -1,32 +1,90 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
-  <title>Document</title>
-  <link rel="stylesheet" href="./css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/test.css">
 </head>
 
 <body>
-  <div class="container-fluid h-100">
-    <div class="row h-100">
-      <div class="col-2 h-100">
-        aside left
-        <button data-toggle="tooltip" data-placement="top" title="Tooltip on top">click me</button>
-      </div>
-      <div class="col-8 h-100 text-center bg-success">
-        current conversation
-      </div>
-      <div class="col-2 h-100">
-        aside right
-      </div>
+    <!-- Button trigger modal -->
+    <div class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
     </div>
-  </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body card">
+                    <div class="heros">
+                        <img class="background" name='background'
+                        src="https://images.unsplash.com/photo-1425321395722-b1dd54a97cf3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1600&h=900&fit=crop&ixid=eyJhcHBfaWQiOjF9&s=6bb26c224def312127d93e664ec5d03d"
+                        alt=""
+                        >
+                    </div>
+                    <div class="main-info">
+                        <div class="user">
+                            <div class="avatar-div">
+                                <img class="avatar" src="./img/cat.jpg" alt="">
+                                <div class="test"  style="position: absolute;
+                                top: 195px;left: 17px; width: 120px; height: 63px; border-radius: 0% 0% 500% 500%;">
+                                    <i class="fas 3x fa-camera" style="margin-left: 50px"></i>
+                                </div>
+                            </div>
+
+                            <div class="user-details">
+                                <h3 class="card-text" id="card-user-name">Hiếu Nguyễn</h3>
+                                <br>
+                                <h5 class="card-text" id="card-user-email">abctest@gmail.com</h5>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-content">
+                                <div class="name-wrapper">
+                                    <div class="input-wrapper">
+                                        <input id="input-firstname" type="text" name="firstname"
+                                            placeholder="Firstname">
+                                        <div id="firstname-error" class="message-error"></div>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <input type="text" name="lastname" placeholder="Lastname">
+                                        <div id="lastname-error" class="message-error"></div>
+                                    </div>
+                                </div>
+                                <div class="input-wrapper">
+                                    <input type="email" name="email" placeholder="Email">
+                                    <div id="email-error" class="message-error"></div>
+                                </div>
+                                <hr>
+                                <div style="margin-left: 40%;">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

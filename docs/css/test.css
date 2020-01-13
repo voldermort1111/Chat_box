@@ -1,0 +1,56 @@
+.card-text {
+    color: black;
+}
+
+.card {
+    width: 100%;
+    border-radius: 5px;
+    background: white;
+    padding: 0%;
+}
+
+.hero {
+    height: 130px;
+    background: url('https://images.unsplash.com/photo-1425321395722-b1dd54a97cf3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1600&h=900&fit=crop&ixid=eyJhcHBfaWQiOjF9&s=6bb26c224def312127d93e664ec5d03d');
+    background-size: cover;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.main-info {
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+}
+
+.user {
+    display: flex;
+    height: 90px;
+    margin-bottom: 10px;
+}
+
+.avatar {
+    height: 130px;
+    border-radius: 100%;
+    border: 3px solid #fff;
+    position: relative;
+    top: -50%;
+}
+
+.user-details {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+h3 {
+    margin: 0;
+}
+
+.heros {
+    height: 130px;
+    border-radius: 5px 5px 0px 0px;
+}
+.background{
+    width: 100%;
+    height: 130px;
+    border-radius: 5px 5px 0px 0px;
+    object-fit: cover;
+}

@@ -1,0 +1,206 @@
+
+<!-- saved from url=(0014)about:internet -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="./Chat Box_files/css" rel="stylesheet">
+    <link rel="stylesheet" href="./Chat Box_files/all.min.css">
+
+    <link rel="stylesheet" href="./Chat Box_files/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="./Chat Box_files/jquery-3.2.1.slim.min.js.tải xuống" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="./Chat Box_files/popper.min.js.tải xuống" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="./Chat Box_files/bootstrap.min.js.tải xuống" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="./Chat Box_files/firebase-app.js.tải xuống"></script>
+    <script src="./Chat Box_files/firebase-auth.js.tải xuống"></script>
+    <script src="./Chat Box_files/firebase-firestore.js.tải xuống"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCeYZoOCtGZJbc1FmLMCrH329677paJCTc",
+            authDomain: "ci-32-6d910.firebaseapp.com",
+            databaseURL: "https://ci-32-6d910.firebaseio.com",
+            projectId: "ci-32-6d910",
+            storageBucket: "ci-32-6d910.appspot.com",
+            messagingSenderId: "656864822192",
+            appId: "1:656864822192:web:1ec0f8d25c8befe2cacc75"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <title>Chat Box</title>
+    <link rel="stylesheet" href="./Chat Box_files/main.css">
+    <link rel="stylesheet" href="./Chat Box_files/test.css">
+    <script src="./Chat Box_files/components.js.tải xuống"></script>
+    <script src="./Chat Box_files/view.js.tải xuống"></script>
+    <script src="./Chat Box_files/controller.js.tải xuống"></script>
+    <script src="./Chat Box_files/model.js.tải xuống"></script>
+
+    <script src="./Chat Box_files/main.js.tải xuống"></script>
+</head>
+
+<body>
+    <div id="app">
+<nav class="main-nav">
+  <div class="user-profile">
+    <span id="user-name" data-toggle="modal" data-target="#exampleModal">Linh Nguyen</span>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body card">
+                    <div class="hero">
+                    </div>
+                    <div class="main-info">
+                        <div class="user">
+                            <img class="avatar" src="./Chat Box_files/cat.jpg" alt="">
+                            <div class="user-details">
+                                <h3 class="card-text" id="card-user-name">Linh Nguyen</h3>
+                                <br>
+                                <h5 class="card-text" id="card-user-email">nguyenlinhdieu98@gmail.com</h5>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-content">
+                                <div class="name-wrapper">
+                                    <div class="input-wrapper">
+                                        <input id="change-firstname" type="text" name="firstname" placeholder="Firstname">
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <input id="change-lastname" type="text" name="lastname" placeholder="Lastname">
+                                    </div>
+                                </div>
+                                <div class="input-wrapper">
+                                    <input id="change-email" type="email" name="email" placeholder="Email">
+                                </div>
+                                <hr>
+                                <div style="margin-left: 40%;">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="sign-out-btn" class="btn-icon" data-toggle="tooltip" data-placement="bottom" title="Log out">
+      <i class="fas fa-sign-out-alt"></i>
+    </button>
+  </div>
+</nav>
+
+<section class="chat-container">
+  <div class="aside-left">
+    <div id="list-conversations" class="list-conversations">
+        <div id="conversation-c2rypbMaYGrhAZBZggzz" class="conversation current">
+          <div class="conversation-title">hiếu linh</div>
+          <div class="conversation-members">2 members</div>
+        </div>
+      
+        <div id="conversation-nRbtC4kUisx1skzEh9xm" class="conversation">
+          <div class="conversation-title">hihi</div>
+          <div class="conversation-members">3 members</div>
+        </div>
+      </div>
+    <form id="form-add-conversation" class="form-add-conversation">
+      <div class="input-wrapper">
+        <input id="title-input" type="text" name="title" placeholder="Title">
+        <div id="title-error" class="message-error"></div>
+      </div>
+      <div class="input-wrapper">
+        <input id="friend-email-input" type="email" name="friendEmail" placeholder="Enter your friend email..">
+        <div id="friend-email-error" class="message-error"></div>
+      </div>
+      <button id="form-add-conversation-submit-btn" type="submit" class="btn-icon">
+        <i class="fas fa-plus"></i>
+      </button>
+    </form>
+  </div>
+  <div class="current-conversation">
+    <div id="list-messages" class="list-messages">
+        <div class="message-chat your">
+          <h5>Linh Nguyen</h5><br>
+          <span>alo check</span>
+        </div>
+      
+        <div class="message-chat him">
+          <h5>Hiếu Nguyễn</h5><br>
+          <span>check ok</span>
+        </div>
+      
+        <div class="message-chat your">
+          <h5>Linh Nguyen</h5><br>
+          <span>check</span>
+        </div>
+      
+        <div class="message-chat your">
+          <h5>Linh Nguyen</h5><br>
+          <span>đây sẽ là một đoạn text dài để test nên chịu khó đọc nốt đi nhé hoặc là không cần đọc đâu ok không bạn</span>
+        </div>
+      
+        <div class="message-chat your">
+          <h5>Linh Nguyen</h5><br>
+          <span>sao đoạn trên lỗi gì vậy</span>
+        </div>
+      
+        <div class="message-chat your">
+          <h5>Linh Nguyen</h5><br>
+          <span>padding đẹp như thế r mà</span>
+        </div>
+      
+        <div class="message-chat him">
+          <h5>Hiếu Nguyễn</h5><br>
+          <span>ok desu</span>
+        </div>
+      
+        <div class="message-chat him">
+          <h5>Hiếu Nguyễn</h5><br>
+          <span>alo</span>
+        </div>
+      </div>
+    <form id="form-chat" class="form-chat">
+      <div class="input-wrapper">
+        <input id="message-input" type="text" name="message" placeholder="Enter your message">
+      </div>
+      <button id="form-chat-btn" type="submit">Send</button>
+    </form>
+  </div>
+  <div class="aside-right">
+    <div class="details-current-conversation">
+      <div id="list-users" class="list-users">
+        <div>mhieunguyen4438@gmail.com</div>
+      
+        <div>nguyenlinhdieu98@gmail.com</div>
+      </div>
+      <div id="created-at" class="created-at">20:46:50, 29/12/2019</div>
+    </div>
+    <br>
+    <form id="form-add-new-member" class="form-add-new-member">
+      <div class="input-wrapper">
+        <input id="new-friend-email-input" type="email" name="newFriendEmail" placeholder="Enter your friend email..">
+        <div id="new-friend-email-error" class="message-error"></div>
+      </div>
+      <button type="submit" id="add-new-member-btn" class="btn-icon" data-toggle="tooltip" data-placement="bottom" title="Add new member">
+        <i class="fas fa-user-plus"></i>
+      </button>
+    </form>  
+    <button type="button" id="leave-conversation-btn" class="btn-icon" data-toggle="tooltip" data-placement="bottom" title="Leave conversation">
+      <i class="fas fa-minus"></i>
+    </button>
+  </div>
+</section>
+</div>
+
+
+</body></html>

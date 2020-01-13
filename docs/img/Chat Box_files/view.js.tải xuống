@@ -1,6 +1,6 @@
 const view = {}
 
-view.showComponent = function (name) {
+view.showComponent = function(name) {
     switch (name) {
         case 'register':
             {
@@ -23,13 +23,13 @@ view.showComponent = function (name) {
 
                     // 1. lay thong tin nguoi dung dien vao form
                     let registerInfo = {
-                        firstname: form.firstname.value,
-                        lastname: form.lastname.value,
-                        email: form.email.value,
-                        password: form.password.value,
-                        confirmPassword: form.confirmPassword.value
-                    }
-                    // 2. validate thong tin
+                            firstname: form.firstname.value,
+                            lastname: form.lastname.value,
+                            email: form.email.value,
+                            password: form.password.value,
+                            confirmPassword: form.confirmPassword.value
+                        }
+                        // 2. validate thong tin
                     let validateResult = [
                         view.validate(registerInfo.firstname, 'firstname-error', 'Invalid firstname!'),
                         view.validate(registerInfo.lastname, 'lastname-error', 'Invalid lastname!'),
@@ -94,6 +94,7 @@ view.showComponent = function (name) {
                         controller.logIn(logInInfo)
                     }
                 }
+
                 break
             }
         case 'chat':
@@ -105,17 +106,7 @@ view.showComponent = function (name) {
                 document.getElementById('user-name').innerHTML = firebase.auth().currentUser.displayName
                 document.getElementById('card-user-name').innerHTML = firebase.auth().currentUser.displayName
                 document.getElementById('card-user-email').innerHTML = firebase.auth().currentUser.email
-                firebase.firestore().collection("users")
-                    .where("email", "==", firebase.auth().currentUser.email)
-                    .get()
-                    .then(function (querySnapshot) {                        
-                        querySnapshot.forEach(function (doc) {
-                            document.getElementById('change-firstname').value = doc.data().firstName
-                            document.getElementById('change-lastname').value = doc.data().lastName
-                            document.getElementById('change-email').value = firebase.auth().currentUser.email
-                        });
-                    })
-
+                document.getElementById('change-firstname').value = firebase.firestore().collection("users")
                 controller.loadConversations()
                 controller.setupOnSnapshot() // nhan thay doi tu database
 
@@ -130,9 +121,6 @@ view.showComponent = function (name) {
 
                 let formAddNewMember = document.getElementById('form-add-new-member')
                 formAddNewMember.onsubmit = formAddNewMemberHandler
-                
-                let formChangeUserInfor = document.getElementById('change-user-infor-form')
-                formChangeUserInfor.onsubmit = formChangeUserInforHandler
 
                 let btnLeaveConversation = document.getElementById('leave-conversation-btn')
                 btnLeaveConversation.onclick = leaveConversationHandler
@@ -188,20 +176,6 @@ view.showComponent = function (name) {
                     }
                 }
 
-                function formChangeUserInforHandler(e){
-                    e.preventDefault()
-                    console.log(formChangeUserInfor.avatar.src);
-                    let UserInfo = {
-                        firstName: formChangeUserInfor.firstname.value,
-                        lastName: formChangeUserInfor.lastname.value,
-                        email: formChangeUserInfor.email.value,
-                        avatar: formChangeUserInfor.avatar.src,
-                        background: formChangeUserInfor.background.src
-                    }
-                    controller.changeUserInfo(UserInfo)
-                    
-                }
-
                 function leaveConversationHandler() {
                     controller.leaveConversation()
                 }
@@ -211,11 +185,11 @@ view.showComponent = function (name) {
     }
 }
 
-view.setText = function (id, text) {
+view.setText = function(id, text) {
     document.getElementById(id).innerText = text
 }
 
-view.validate = function (condition, idErrorTag, messageError) {
+view.validate = function(condition, idErrorTag, messageError) {
     if (condition) {
         view.setText(idErrorTag, '')
         return true
@@ -225,19 +199,19 @@ view.validate = function (condition, idErrorTag, messageError) {
     }
 }
 
-view.disable = function (id) {
+view.disable = function(id) {
     document.getElementById(id).setAttribute('disabled', true)
 }
 
-view.enable = function (id) {
-    document.getElementById(id).removeAttribute('disabled')
-}
-/*
-  <div class="message-chat">
-    <span>Hello</span>
-  </div>
-*/
-view.showCurrentConversation = function () {
+view.enable = function(id) {
+        document.getElementById(id).removeAttribute('disabled')
+    }
+    /*
+      <div class="message-chat">
+        <span>Hello</span>
+      </div>
+    */
+view.showCurrentConversation = function() {
     if (model.currentConversation) {
         // show message chat
         let messages = model.currentConversation.messages
@@ -281,7 +255,7 @@ view.showCurrentConversation = function () {
     }
 }
 
-view.clearCurrentConversation = function () {
+view.clearCurrentConversation = function() {
     let listMessages = document.getElementById('list-messages')
     let listUsers = document.getElementById('list-users')
     let createdAt = document.getElementById('created-at')
@@ -291,7 +265,7 @@ view.clearCurrentConversation = function () {
     createdAt.innerHTML = ''
 }
 
-view.showListConversations = function () {
+view.showListConversations = function() {
     if (model.conversations) {
         let conversations = model.conversations
         let listConversations = document.getElementById('list-conversations')

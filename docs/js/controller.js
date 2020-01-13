@@ -4,7 +4,7 @@ controller.initAuth = function () {
   firebase.auth().onAuthStateChanged(authStateChangeHandler)
 
   function authStateChangeHandler(user) {
-    if (user && user.emailVerified) {
+    if (user) {
       view.showComponent('chat')
     } else {
       view.showComponent('logIn')
